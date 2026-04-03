@@ -8,6 +8,7 @@ import authRoutes from './routes/auth.routes.js';
 import partieRoutes from './routes/partie.routes.js';
 import vagueRoutes from './routes/vague.routes.js';
 import tourRoutes  from './routes/tour.routes.js';
+import leaderboardRoutes from './routes/leaderboard.routes.js';
 
 dotenv.config();
 
@@ -23,6 +24,7 @@ app.use('/auth', authRoutes);
 app.use('/parties', partieRoutes);
 app.use('/parties/:id/vagues', vagueRoutes);
 app.use('/parties/:id/tours',  tourRoutes);
+app.use('/leaderboard', leaderboardRoutes);
 
 // Test de connexion BDD
 app.get('/health', async (req, res) => {
