@@ -5,6 +5,9 @@ import { createServer } from 'http';
 import { Server } from 'socket.io';
 import pool from './config/db.js';
 import authRoutes from './routes/auth.routes.js';
+import partieRoutes from './routes/partie.routes.js';
+import vagueRoutes from './routes/vague.routes.js';
+import tourRoutes  from './routes/tour.routes.js';
 
 dotenv.config();
 
@@ -17,6 +20,9 @@ const io = new Server(httpServer, {
 app.use(cors());
 app.use(express.json());
 app.use('/auth', authRoutes);
+app.use('/parties', partieRoutes);
+app.use('/parties/:id/vagues', vagueRoutes);
+app.use('/parties/:id/tours',  tourRoutes);
 
 // Test de connexion BDD
 app.get('/health', async (req, res) => {
