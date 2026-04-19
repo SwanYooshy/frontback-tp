@@ -9,6 +9,7 @@ import partieRoutes from './routes/partie.routes.js';
 import vagueRoutes from './routes/vague.routes.js';
 import tourRoutes  from './routes/tour.routes.js';
 import leaderboardRoutes from './routes/leaderboard.routes.js';
+import catalogueRoutes from './routes/catalogue.routes.js';
 
 dotenv.config();
 
@@ -20,6 +21,7 @@ const io = new Server(httpServer, {
 
 app.use(cors());
 app.use(express.json());
+app.use('/', catalogueRoutes);
 app.use('/auth', authRoutes);
 app.use('/parties', partieRoutes);
 app.use('/parties/:id/vagues', vagueRoutes);
