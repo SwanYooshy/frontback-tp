@@ -291,7 +291,7 @@ export default function Game() {
 
         {/* Canvas */}
         <div className="flex-1 flex items-center justify-center relative bg-gray-950 overflow-hidden">
-          <div className="relative flex-shrink-0">
+          <div className="relative shrink-0">
             <PhaserGame
               placedTowers={placedTowers}
               selectedTowerType={selectedTowerType}
