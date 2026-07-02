@@ -112,9 +112,9 @@ export default function Game() {
     const placedTowersRef = { current: placedTowers };
 
     // Snapshot des tours au début de la vague
-    refreshTowers().then(() => {
-        placedTowersRef.current = placedTowers;
-    });
+    // refreshTowers().then(() => {
+    //     placedTowersRef.current = placedTowers;
+    // });
 
     blobIntervalRef.current = setInterval(() => {
         blobsRef.current = blobsRef.current.map(blob => {
@@ -189,7 +189,11 @@ export default function Game() {
         or_gagne:       eliminated * 10,
         vies_perdues:   livesLost,
       });
-      setAiComment(data.comment);
+
+      if (data.comment) {
+        setAiComment(null);
+        setAiComment(data.comment);
+      }
     } catch (err) {
       console.error(err);
     }
@@ -289,36 +293,41 @@ export default function Game() {
 
       <div className="flex flex-1 overflow-hidden">
 
-        {/* Canvas */}
-        <div className="flex-1 flex items-center justify-center relative bg-gray-950 overflow-hidden">
-          <div className="relative shrink-0">
-            <PhaserGame
-              placedTowers={placedTowers}
-              selectedTowerType={selectedTowerType}
-              onTilePlaceTower={handleTilePlaceTower}
-              onSelectPlacedTower={(t) => {
-                setSelectedPlacedTower(t);
-                setSelectedTowerType(null);
-              }}
-              blobsActive={blobsActive}
-            />
-            <AIComment comment={aiComment} />
-          </div>
+        <div className="flex-1 flex flex-col overflow-hidden">
 
-          {(phase === 'idle' || phase === 'between') && (
-            <button
-              onClick={launchWave}
-              className="absolute bottom-6 left-1/2 -translate-x-1/2 bg-white text-gray-900 px-8 py-3 rounded-xl font-bold text-lg hover:bg-gray-200 transition shadow-lg"
-            >
-              {phase === 'idle' ? 'Lancer la partie' : `Lancer la vague ${waveNumber + 1}`}
-            </button>
-          )}
+          {/* Commentaire IA */}
+          <AIComment comment={aiComment} />
 
-          {phase === 'wave' && (
-            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 bg-gray-800 text-gray-400 px-6 py-3 rounded-xl text-sm">
-              Vague en cours...
+          {/* Canvas */}
+          <div className="flex-1 flex items-center justify-center relative bg-gray-950 overflow-hidden">
+            <div className="relative shrink-0">
+              <PhaserGame
+                placedTowers={placedTowers}
+                selectedTowerType={selectedTowerType}
+                onTilePlaceTower={handleTilePlaceTower}
+                onSelectPlacedTower={(t) => {
+                  setSelectedPlacedTower(t);
+                  setSelectedTowerType(null);
+                }}
+                blobsActive={blobsActive}
+              />
             </div>
-          )}
+
+            {(phase === 'idle' || phase === 'between') && (
+              <button
+                onClick={launchWave}
+                className="absolute bottom-6 left-1/2 -translate-x-1/2 bg-white text-gray-900 px-8 py-3 rounded-xl font-bold text-lg hover:bg-gray-200 transition shadow-lg"
+              >
+                {phase === 'idle' ? 'Lancer la partie' : `Lancer la vague ${waveNumber + 1}`}
+              </button>
+            )}
+
+            {phase === 'wave' && (
+              <div className="absolute bottom-6 left-1/2 -translate-x-1/2 bg-gray-800 text-gray-400 px-6 py-3 rounded-xl text-sm">
+                Vague en cours...
+              </div>
+            )}
+          </div>
         </div>
 
         {/* Panneau tours */}
