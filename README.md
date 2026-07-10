@@ -130,7 +130,7 @@ ollama serve
 | ✅ Must have | Commentateur IA après chaque vague (LLaMA 3.1 via Ollama) |
 | ✅ Should have | Leaderboard global et scores personnels |
 | ✅ Should have | Plusieurs types de tours (Archer, Magicien, Catapulte) |
-| ✅ Should have | Plusieurs types de blobs (vert, rouge, noir, roi) |
+| ✅ Should have | Plusieurs types de blobs (vert, rouge, noir) |
 | 🔲 Nice to have | Socket.io leaderboard temps réel |
 | 🔲 Nice to have | Effets sonores et animations de sprites |
 
