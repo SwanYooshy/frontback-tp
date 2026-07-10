@@ -169,6 +169,15 @@ Le script SQL complet est disponible dans `back/sql/init.sql`.
 
 ---
 
+### Lancer les tests
+
+```bash
+cd back
+npm test
+```
+
+---
+
 ## Fonctionnalité IA
 
 Après chaque vague terminée, le serveur interroge **LLaMA 3.1** via l'API Ollama locale (`http://localhost:11434`) avec le contexte de la vague (blobs éliminés, vies perdues, tours utilisées). Le modèle génère un commentaire narratif de 2-3 phrases dans un style médiéval fantasy affiché en bandeau dans l'interface.
