@@ -215,4 +215,4 @@ front/src/
 
 ## Licence
 
-Projet réalisé dans le cadre d'un TP scolaire - Ynov Connect M2 Dev 2024/2025.
+Projet réalisé dans le cadre d'un TP scolaire - Ynov Connect M2 Dev 2025/2026.
